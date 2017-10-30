@@ -1,6 +1,8 @@
 #ifndef MY_NUMBERS
 #define MY_NUMBERS
 
+#include <assert.h>
+
 #define MY_NUMBERS_SENTINEL_VALUE  ( -1 )
 
 int my_numbers_1[] = {
