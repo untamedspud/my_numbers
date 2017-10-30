@@ -101,12 +101,15 @@ int my_numbers_3[1001] = {
  985, 986, 987, 988, 989, 990, 991, 992, 993, 994, 995, 996, 997, 998,
  999, 1000 };
  
- int my_numbers_4[ 100 ] = { 1, 2, 3, [10] = 10, 11, 12, [60] = 50, [42] = 420 };
+int my_numbers_4[ 100 ] = { 1, 2, 3, [10] = 10, 11, 12, [60] = 50, [42] = 420 };
  
- int my_numbers_5[ 2 ][ 3 ] = { { 5, 6, 7 }, { 10, 20, 30 } };
- int my_numbers_6[ 2 ][ 3 ] = { { 1, 2, 3 }, {  3,  2,  1 } };
+int my_numbers_5[ 2 ][ 3 ] = { { 5, 6, 7 }, { 10, 20, 30 } };
+int my_numbers_6[ 2 ][ 3 ] = { { 1, 2, 3 }, {  3,  2,  1 } };
+
+#define FIBONACCI_SIZE 30  
+long fibonacci_first_few[ FIBONACCI_SIZE ];
  
- void validate_my_numbers()
+void validate_my_numbers()
 {
 	printf( "Size of my_numbers_1 = %zd.\n", sizeof my_numbers_1 / sizeof my_numbers_1[0] );
 	printf( "Size of my_numbers_2 = %zd.\n", sizeof my_numbers_2 / sizeof my_numbers_2[0] );
@@ -117,5 +120,19 @@ int my_numbers_3[1001] = {
 	return;
 }
 
+void fill_fibonacci_first_few( )
+{
+	int i;
+	
+	// defensive programming
+	assert( FIBONACCI_SIZE > 0 );
+	
+	fibonacci_first_few[ 0 ] = 0;
+	fibonacci_first_few[ 1 ] = 1;
+	for( i = 2; i < FIBONACCI_SIZE; i++ )
+                fibonacci_first_few[ i ] = fibonacci_first_few[ i - 2 ] + fibonacci_first_few[ i - 1 ];
+	
+	return;
+}
 
 #endif
